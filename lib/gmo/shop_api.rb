@@ -189,6 +189,15 @@ module GMO
         post_request name, options
       end
 
+      # 【バーチャル口座（あおぞら銀行）】
+      # 取引実行
+      def exec_tran_ganb(options = {})
+        name = "ExecTranGANB.idPass"
+        required = [:access_id, :access_pass, :order_id]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       # 【コンビニ払い】
       # 2.1.2.2. 決済実行
       # お客様が入力した情報で後続の決済センターと通信を行い決済を実施し、結果を返します。
