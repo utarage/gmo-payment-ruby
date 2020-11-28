@@ -63,6 +63,14 @@ module GMO
         post_request name, options
       end
 
+      # 【銀行振込（バーチャル口座 あおぞら）】
+      def entry_tran_ganb(options = {})
+        name = "EntryTranGANB.idPass"
+        required = [:order_id, :amount]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
       # 【Pay-easy決済】
       #  5.1.2.1. 取引登録
       #  これ以降の決済取引で必要となる取引IDと取引パスワードの発行を行い、取引を開始します。
