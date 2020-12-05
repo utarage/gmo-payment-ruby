@@ -63,7 +63,8 @@ module GMO
         post_request name, options
       end
 
-      # 【銀行振込（バーチャル口座 あおぞら）】
+      # 【バーチャル口座（あおぞら銀行）】
+      # 取引登録
       def entry_tran_ganb(options = {})
         name = "EntryTranGANB.idPass"
         required = [:order_id, :amount]
@@ -193,6 +194,15 @@ module GMO
       # 取引実行
       def exec_tran_ganb(options = {})
         name = "ExecTranGANB.idPass"
+        required = [:access_id, :access_pass, :order_id]
+        assert_required_options(required, options)
+        post_request name, options
+      end
+
+      # 【バーチャル口座（あおぞら銀行）】
+      # 取引停止
+      def cancel_tran_ganb(options = {})
+        name = "CancelTranGANB.idPass"
         required = [:access_id, :access_pass, :order_id]
         assert_required_options(required, options)
         post_request name, options
